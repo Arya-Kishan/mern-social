@@ -1,9 +1,12 @@
 const express = require('express');
-const server = express();
 require('dotenv').config();
 require('./mongoDB.js');
 const PORT = process.env.PORT || 8080;
 const userRoutes = require('./Routes/UserRoute');
+
+
+const server = express();
+
 server.use(express.json());
 
 server.get('/', (req, res) => {
