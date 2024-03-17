@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://Arya:Arya12345mongO@arya.z2dlxqw.mongodb.net/?retryWrites=true&w=majority&appName=Arya')
+mongoose.connect('mongodb+srv://arya1234:Arya12345mongO@my-mern-social.7sec6nu.mongodb.net/?retryWrites=true&w=majority&appName=my-mern-social')
     .then(() => {
         console.log("CONNECTED TO CLOUD MONGO DB");
     })

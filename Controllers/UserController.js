@@ -14,3 +14,18 @@ exports.getAllUser = async (req, res) => {
     }
 }
 
+exports.addUser = async (req, res) => {
+    try {
+
+        const user = new User(req.body)
+        let newUser = await user.save();
+
+        res.status(200).json(newUser);
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ 'message': 'Error in making new user' });
+    }
+}
+
+
