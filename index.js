@@ -1,31 +1,22 @@
-const express = require("express")
-const cors = require('cors');
-require('dotenv').config()
-const PORT = process.env.PORT || 8080
-require("./mongoDB.js")
-
-const userRouter = require("./Routes/UserRoute")
-
-
+const express = require('express');
 const server = express();
-
-server.use(cors());
+require('dotenv').config();
+require('./mongoDB.js');
+const PORT = process.env.PORT || 8080;
+const userRoutes = require('./Routes/UserRoute');
 server.use(express.json());
 
+server.get('/', (req, res) => {
+    res.send('products api running new deploy');
+});
 
+server.get('/ping', (req, res) => {
+    res.send('PONG')
+});
 
-server.use("/user", userRouter)
+// users
+server.use('/user', userRoutes);
 
-
-server.use("/arya", (req, res) => {
-    res.status(200).json({ "message": "WELCOME ARYA" })
-})
-
-
-server.use("/", (req, res) => {
-    res.status(200).json({ "message": "NORMAL ROUTE" })
-})
-
-server.listen(PORT, () => {
-    console.log(`SERVER LISTENED AT 8080`);
+server.listen(8080, () => {
+    console.log('Server is listenin on PORT :' + PORT);
 })
